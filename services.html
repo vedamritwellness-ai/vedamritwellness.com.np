@@ -3,100 +3,171 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Our Products - Vedamrit Wellness</title>
+  <title>Premium Collection | Vedamrit Wellness</title>
+  
+  <!-- External System Imports for Advanced Rendering Elements -->
   <script src="https://tailwindcss.com"></script>
+  <script src="https://unpkg.com" crossorigin></script>
+  <script src="https://unpkg.com" crossorigin></script>
+  <script src="https://unpkg.com"></script>
+
+  <script>
+    // Inject custom configurations into Tailwind to handle depth styling smoothly
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brandDark: '#0b130a',
+          }
+        }
+      }
+    }
+  </script>
 </head>
-<body class="bg-[#fcfdfc] text-slate-800 font-sans">
+<body class="bg-brandDark text-slate-100 font-sans antialiased overflow-x-hidden">
 
-  <!-- GLOBAL NAVIGATION HEADER -->
-  <nav class="bg-white border-b border-emerald-100 shadow-sm">
-    <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
-      <a href="index.html" class="flex items-center gap-3">
-        <img src="logo.png" alt="Vedamrit Logo" class="h-10 w-auto object-contain">
-        <span class="font-bold text-xl text-emerald-800 tracking-tight">Vedamrit Wellness</span>
-      </a>
-      <div class="flex gap-6 font-medium text-slate-600">
-        <a href="index.html" class="hover:text-emerald-600 transition">Home</a>
-        <a href="about.html" class="hover:text-emerald-600 transition">About</a>
-        <a href="services.html" class="text-emerald-600 border-b-2 border-emerald-600 pb-1">Products</a>
-        <a href="contact.html" class="hover:text-emerald-600 transition">Contact</a>
-      </div>
-    </div>
-  </nav>
+  <!-- TARGET ROOT CONTAINER FOR THE JAVASCRIPT FRAMEWORK -->
+  <div id="root"></div>
 
-  <!-- PRODUCTS GRID DISPLAY -->
-  <main class="max-w-6xl mx-auto px-4 py-16">
-    <h1 class="text-3xl font-bold text-slate-900 mb-2 text-center">Our Natural Wellness Range</h1>
-    <p class="text-center text-slate-500 mb-12 max-w-xl mx-auto">Explore premium, targeted herbal items. Click any item to instantly send an order inquiry to our team via WhatsApp.</p>
-    
-    <div class="grid md:grid-cols-3 gap-8">
-      
-      <!-- ITEM 1: IMMUNITY SUPPLEMENT -->
-      <div class="bg-white rounded-2xl border border-slate-100 p-6 shadow-sm flex flex-col justify-between hover:shadow-md transition">
-        <div>
-          <div class="w-full h-48 bg-emerald-50/50 rounded-xl flex items-center justify-center text-5xl mb-4">🌿</div>
-          <span class="text-xs font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded">Immunity</span>
-          <h2 class="text-xl font-bold text-slate-800 mt-3 mb-2">Premium Immunity Booster</h2>
-          <p class="text-slate-600 text-xs leading-relaxed mb-4">A powerful blend of natural organic herbs formulated to strengthen defenses, maximize vitality, and boost metabolic health naturally.</p>
-        </div>
-        <div>
-          <div class="border-t border-slate-100 pt-4 flex items-center justify-between">
-            <div>
-              <p class="text-[10px] text-slate-400 uppercase font-semibold">Available In</p>
-              <p class="text-xs font-bold text-slate-700"></p>
-            </div>
-            <a href="https://wa.me." target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white font-medium text-xs px-3 py-2 rounded-lg transition shadow-sm">Order on WhatsApp</a>
-          </div>
-        </div>
-      </div>
+  <script>
+    // Pull objects directly out of the global React & Motion libraries
+    const { useState, useEffect } = React;
+    const { motion, AnimatePresence } = FramerMotion;
 
-      <!-- ITEM 2: HERBAL TEA -->
-      <div class="bg-white rounded-2xl border border-slate-100 p-6 shadow-sm flex flex-col justify-between hover:shadow-md transition">
-        <div>
-          <div class="w-full h-48 bg-emerald-50/50 rounded-xl flex items-center justify-center text-5xl mb-4">🍵</div>
-          <span class="text-xs font-bold uppercase tracking-wider text-green-700 bg-green-50 px-2.5 py-1 rounded">Infusions</span>
-          <h2 class="text-xl font-bold text-slate-800 mt-3 mb-2">Rejuvenating Herbal Tea</h2>
-          <p class="text-slate-600 text-xs leading-relaxed mb-4">An aromatic mix of handpicked roots and botanicals optimized to relieve daily stress, cleanse systems, and support smooth digestion.</p>
-        </div>
-        <div>
-          <div class="border-t border-slate-100 pt-4 flex items-center justify-between">
-            <div>
-              <p class="text-[10px] text-slate-400 uppercase font-semibold">Available In</p>
-              <p class="text-xs font-bold text-slate-700">Loose Leaves / Bags</p>
-            </div>
-            <a href="https://wa.me." target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white font-medium text-xs px-3 py-2 rounded-lg transition shadow-sm">Order on WhatsApp</a>
-          </div>
-        </div>
-      </div>
+    function App() {
+      // Manage active filtering layers for your herbal lines dynamically
+      const [category, setCategory] = useState('all');
 
-      <!-- ITEM 3: MASSAGE OILS -->
-      <div class="bg-white rounded-2xl border border-slate-100 p-6 shadow-sm flex flex-col justify-between hover:shadow-md transition">
-        <div>
-          <div class="w-full h-48 bg-emerald-50/50 rounded-xl flex items-center justify-center text-5xl mb-4">🧴</div>
-          <span class="text-xs font-bold uppercase tracking-wider text-amber-700 bg-amber-50 px-2.5 py-1 rounded">Therapeutic</span>
-          <h2 class="text-xl font-bold text-slate-800 mt-3 mb-2">Pure Joint Relief Oil</h2>
-          <p class="text-slate-600 text-xs leading-relaxed mb-4">Traditional hot-infused herbal oil specifically formulated to soothe muscle fatigue, cushion joint tissues, and improve flexibility.</p>
-        </div>
-        <div>
-          <div class="border-t border-slate-100 pt-4 flex items-center justify-between">
-            <div>
-              <p class="text-[10px] text-slate-400 uppercase font-semibold">Available In</p>
-              <p class="text-xs font-bold text-slate-700">60ml / 100ml Bottles</p>
-            </div>
-            <a href="https://wa.me." target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white font-medium text-xs px-3 py-2 rounded-lg transition shadow-sm">Order on WhatsApp</a>
-          </div>
-        </div>
-      </div>
+      const products = [
+        {
+          id: 1,
+          title: "Premium Immunity Booster",
+          cat: "supplements",
+          desc: "Concentrated high-altitude botanical trace compounds optimized to stimulate metabolic defense protocols.",
+          form: "Extract Powder",
+          color: "from-emerald-500/20 to-teal-500/10",
+          border: "hover:border-emerald-500/40",
+          glow: "bg-emerald-500/10",
+          link: "https://wa.me"
+        },
+        {
+          id: 2,
+          title: "Rejuvenating Herbal Tea",
+          cat: "tea",
+          desc: "Organic mountain leaves combined with active roots to soothe digestion and completely clarify systemic waste pathways.",
+          form: "Loose Leaf Blend",
+          color: "from-green-500/20 to-lime-500/10",
+          border: "hover:border-green-500/40",
+          glow: "bg-green-500/10",
+          link: "https://wa.me"
+        },
+        {
+          id: 3,
+          title: "Pure Joint Relief Oil",
+          cat: "oils",
+          desc: "Traditional slow-simmered herbal elements infused into nutrient carrying bases to unlock deep cellular muscle relief.",
+          form: "Infused Liquid",
+          color: "from-amber-500/20 to-orange-500/10",
+          border: "hover:border-amber-500/40",
+          glow: "bg-amber-500/10",
+          link: "https://wa.me"
+        }
+      ];
 
-    </div>
-  </main>
+      const filteredProducts = category === 'all' ? products : products.filter(p => p.cat === category);
 
-  <!-- GLOBAL FOOTER -->
-  <footer class="bg-slate-900 text-slate-400 py-12 px-4 mt-20">
-    <div class="max-w-6xl mx-auto text-center text-xs">
-      &copy; 2026 Vedamrit Wellness Pvt. Ltd. All rights reserved.
-    </div>
-  </footer>
+      return React.createElement('div', { className: "min-h-screen relative pb-20" },
+        
+        // LAYER 1: THE BACKGROUND MESH LAYER (Moving Ambient Lights)
+        React.createElement('div', { className: "absolute inset-0 z-0 pointer-events-none overflow-hidden" },
+          React.createElement('div', { className: "absolute top-[-10%] left-[-20%] w-[600px] h-[600px] bg-emerald-600/20 rounded-full blur-[140px] animate-pulse" }),
+          React.createElement('div', { className: "absolute bottom-[20%] right-[-10%] w-[500px] h-[500px] bg-green-500/15 rounded-full blur-[120px]" }),
+          React.createElement('div', { className: "absolute top-[40%] left-[30%] w-[400px] h-[400px] bg-amber-500/10 rounded-full blur-[100px]" })
+        ),
 
+        // LAYER 2: GLOBAL GLASS CONTENT LAYER
+        React.createElement('div', { className: "relative z-10 max-w-6xl mx-auto px-6" },
+          
+          // MODERN NAVIGATION MODULE
+          React.createElement('nav', { className: "py-6 mb-16 flex justify-between items-center border-b border-white/5" },
+            React.createElement('a', { href: "index.html", className: "flex items-center gap-3 font-bold text-xl tracking-tight text-white" },
+              React.createElement('span', { className: "text-emerald-400 font-extrabold" }, "🌿"),
+              "Vedamrit Wellness"
+            ),
+            React.createElement('div', { className: "flex gap-6 text-sm text-slate-400 font-medium" },
+              React.createElement('a', { href: "index.html", className: "hover:text-white transition" }, "Home"),
+              React.createElement('a', { href: "about.html", className: "hover:text-white transition" }, "About"),
+              React.createElement('a', { href: "services.html", className: "text-emerald-400 transition font-bold" }, "Products"),
+              React.createElement('a', { href: "contact.html", className: "hover:text-white transition" }, "Contact")
+            )
+          ),
+
+          // HEADER SECTION WITH NEON METRICS
+          React.createElement('div', { className: "max-w-2xl mb-12" },
+            React.createElement('span', { className: "text-xs font-bold uppercase tracking-widest text-emerald-400 mb-3 block" }, "Live Product Showroom"),
+            React.createElement('h1', { className: "text-4xl sm:text-5xl font-black tracking-tight mb-4 text-white leading-none" }, "The Molecular Collection"),
+            React.createElement('p', { className: "text-slate-400 font-light text-sm leading-relaxed" }, "Tap to filter individual wellness architectures. Every element below uses multi-tier backdrop refraction cards to mirror modern structural depth standards.")
+          ),
+
+          // FILTER BAR (Layer Switcher)
+          React.createElement('div', { className: "flex flex-wrap gap-3 mb-12 bg-white/5 p-2 rounded-2xl border border-white/5 backdrop-blur-md w-fit" },
+            ['all', 'supplements', 'tea', 'oils'].map(btn => 
+              React.createElement('button', {
+                key: btn,
+                onClick: () => setCategory(btn),
+                className: `px-5 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-300 ${category === btn ? 'bg-emerald-500 text-brandDark shadow-lg shadow-emerald-500/20' : 'text-slate-300 hover:bg-white/5'}`
+              }, btn)
+            )
+          ),
+
+          // PRODUCT MATRIX (Dynamic Cards)
+          React.createElement('div', { className: "grid sm:grid-cols-2 md:grid-cols-3 gap-8" },
+            filteredProducts.map(prod => 
+              React.createElement(motion.div, {
+                key: prod.id,
+                layout: true,
+                initial: { opacity: 0, y: 30 },
+                animate: { opacity: 1, y: 0 },
+                exit: { opacity: 0, scale: 0.9 },
+                transition: { duration: 0.4 },
+                className: `bg-gradient-to-br ${prod.color} border border-white/5 rounded-3xl p-6 backdrop-blur-xl flex flex-col justify-between transition-all duration-500 group shadow-2xl relative ${prod.border}`
+              },
+                // INTERNAL CARD DEPTH ELEMENT (Ambient glow box)
+                React.createElement('div', { className: `absolute inset-0 -z-10 rounded-3xl transition-opacity duration-500 opacity-0 group-hover:opacity-100 blur-xl ${prod.glow}` }),
+
+                React.createElement('div', null,
+                  // DISPLAY SLICING LAYER
+                  React.createElement('div', { className: "w-full h-44 bg-brandDark/60 rounded-2xl border border-white/5 flex items-center justify-center relative overflow-hidden mb-6" },
+                    React.createElement('div', { className: "absolute w-20 h-20 bg-emerald-500/10 rounded-full blur-xl group-hover:scale-150 transition-transform duration-700" }),
+                    React.createElement('span', { className: "text-slate-500 font-mono tracking-widest text-[10px] uppercase z-10" }, "[ Secure Vault Frame ]")
+                  ),
+                  React.createElement('span', { className: "text-[9px] font-black uppercase tracking-widest text-emerald-400 border border-emerald-500/20 bg-emerald-500/5 px-2.5 py-1 rounded-md" }, prod.cat),
+                  React.createElement('h2', { className: "text-xl font-bold text-white mt-4 mb-2 tracking-tight group-hover:text-emerald-300 transition-colors" }, prod.title),
+                  React.createElement('p', { className: "text-slate-400 text-xs font-light leading-relaxed mb-6" }, prod.desc)
+                ),
+
+                React.createElement('div', { className: "border-t border-white/5 pt-4 flex items-center justify-between" },
+                  React.createElement('div', null,
+                    React.createElement('p', { className: "text-[8px] text-slate-500 uppercase tracking-widest font-bold" }, "Packaging"),
+                    React.createElement('p', { className: "text-xs font-semibold text-slate-300" }, prod.form)
+                  ),
+                  React.createElement('a', {
+                    href: prod.link,
+                    target: "_blank",
+                    className: "bg-white hover:bg-emerald-400 hover:text-brandDark text-brandDark font-bold text-xs px-4 py-2.5 rounded-xl transition-all duration-300 shadow-lg shadow-white/5 hover:shadow-emerald-400/20 transform active:scale-95"
+                  }, "Order Inquiry")
+                )
+              )
+            )
+          )
+
+        )
+      );
+    }
+
+    // Initialize the engine overlay system flawlessly
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(React.createElement(App));
+  </script>
 </body>
 </html>
